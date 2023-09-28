@@ -13,3 +13,8 @@ Given a version number MAJOR.MINOR.PATCH (e.g. 1.0.1), increment the:
 -    ***PATCH*** version when you make backward compatible bug fixes
 
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+
+## Setting env var for the PROJECT_ROOT
+
+The command 'env' will list all the environment variables for the workspace I am working on.
+
