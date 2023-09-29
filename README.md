@@ -38,6 +38,44 @@ If successful, you should see a JSON payload return that looks like this:
     "Arn": "arn:aws:iam::123456789012:user/administrador"
 }
 ```
-
-
 Commit changes and that's it.
+
+## Terraform Basics
+
+### Terraform Registry
+
+Terraform sources their providers and modules from the Terraform registry which are located at [registry.terraform.io](https://registry.terraform.io/)
+
+- **Providers**: it is an interface to APIs that will allow to create resources on Terraform.
+- **Modules**: are a way to make large amounts of terraform code modular, portable and shareable.
+
+### Terraform Console
+
+We can see a list of all the Terraform commands by simply typing `terraform`
+
+#### Terraform Init
+`terraform init`
+
+At the start of a new terraform project, the execution of this command will cause the binaries for the selected provider to be downloaded.
+
+#### Terraform Plan
+`terraform plan`
+
+This will generate a changeset about the state of our infrastructure and what it will look like once deployed.
+
+#### Terraform Apply
+`terraform apply`
+
+This will run a plan and pass the changeset to be executed by terraform.
+
+### Terraform Lock files
+
+`.terraform.lock.hcl` contains the locked versioning for the providers or modules.
+This file **should be committed** to your Version Control System.
+
+### Terraform State files
+`.terraform.tfstate` contains the information about the current state of your infrastructre. 
+This file **should not be committed** to your Version Control System.
+
+### Terraform Directory
+`.terraform.tfstate` contains the downloaded binaries that correspond to the provider used in the project.
