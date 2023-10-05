@@ -156,3 +156,5 @@ Then, edit the file with your favourite editor and include this structure:
 Init, plan and apply the terraform code and it should work just fine.
 
 At this point, you should see your state file in the Terraform Cloud dashboard.
+
+I have automated thos workaround with the following bash script [/bin/generate_credentials](bin/generate_credentials)
