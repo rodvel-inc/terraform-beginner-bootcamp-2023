@@ -1,3 +1,4 @@
-output "random_bucket_name_result" {
-    value = random_string.bucket_name.result
+output "bucket_name" {
+  description = "The name of the bucket for the website"
+  value = module.terrahouse_aws.bucket_name
 }
