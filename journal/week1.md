@@ -46,3 +46,29 @@ module "consul" {
 }
 ```
 [Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Uploading objects to S3 Buckets
+
+Uploading objects to an S3 is pretty straightforward.
+
+Suppose you need to upload the index.html to an S3 bucket:
+
+```terraform
+resource "aws_s3_object" "object" {
+  bucket = "bucket_name"
+  key    = "index.html"
+  source = "${path.root}/folder/index.html"
+  etag = filemd5("${path.root}/folder/index.html")
+}
+```
+In the preceding example, the `index.html` file is located in a separate folder. 
+
+The location of the folder is referenced via the `${path.root}`.
+
+[Reference to Values in Terraform](https://developer.hashicorp.com/terraform/language/expressions/references)
+
+See there is an `etag` attribute included in the code above. This tag helps Terraform to notice that there has been a change in the content of an object after it was originally uploaded to the bucket.
+
+This is an MD5 hash calculated if included. If the hash changes from one `terraform apply` to the next one, this change is detected and, therefore, the file is uploaded again with its new content.
+
+
