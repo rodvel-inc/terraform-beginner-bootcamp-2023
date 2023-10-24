@@ -19,51 +19,5 @@ terraform {
   }
 }
 
-#provider "aws" {
-  # Configuration options
-#}
-
-#provider "random" {
-  # Configuration options
-#}
-#resource "random_string" "bucket_name" {
-#  lower = true
-#  upper = false
-#  length = 16
-#  special = false
-#}
-
-resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.bucket_name
-
-  tags = {
-    UserUUID        = var.user_uuid
-    }
-}
-
-resource "aws_s3_bucket_website_configuration" "website_configuration" {
-  bucket = aws_s3_bucket.website_bucket.bucket
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
-resource "aws_s3_object" "object_index" {
-  bucket = aws_s3_bucket.website_bucket.bucket
-  key    = "index.html"
-  source = "${path.root}/public/index.html"
-  etag = filemd5("${path.root}/public/index.html")
-}
-
-resource "aws_s3_object" "object_error" {
-  bucket = aws_s3_bucket.website_bucket.bucket
-  key    = "error.html"
-  source = "${path.root}/public/error.html"
-  etag = filemd5("${path.root}/public/error.html")
-}
-
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity
+data "aws_caller_identity" "current" {}

@@ -71,4 +71,6 @@ See there is an `etag` attribute included in the code above. This tag helps Terr
 
 This is an MD5 hash calculated if included. If the hash changes from one `terraform apply` to the next one, this change is detected and, therefore, the file is uploaded again with its new content.
 
+### Terraform Data Sources
 
+[Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
