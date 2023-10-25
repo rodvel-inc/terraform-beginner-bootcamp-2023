@@ -74,3 +74,12 @@ This is an MD5 hash calculated if included. If the hash changes from one `terraf
 ### Terraform Data Sources
 
 [Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+
+### Changind the Lifecycle of resources
+
+By default, Terraform will destroy an object / resource and then create a new one if a new configuration is detected when instructed to do so.
+
+This behaviour can be changed with these lifecycle meta-arguments.
+
+[The Lifecycle meta-argument](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
