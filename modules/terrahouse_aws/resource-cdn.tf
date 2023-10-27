@@ -63,6 +63,19 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+ 
+}
 
-  
+resource "terraform_data" "invalidate_cache" {
+  triggers_replace = terraform_data.content_version.output
+
+  provisioner "local-exec" {
+    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths '/*'"
+    
+  #  command = <<COMMAND 
+#aws cloudfront create-invalidation \
+#--distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
+#--paths "/*"
+#    COMMAND
+  }
 }
