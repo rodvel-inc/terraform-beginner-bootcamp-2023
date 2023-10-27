@@ -83,3 +83,21 @@ By default, Terraform will destroy an object / resource and then create a new on
 This behaviour can be changed with these lifecycle meta-arguments.
 
 [The Lifecycle meta-argument](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+### Invalidate CDN cache
+If you need to remove a file from CloudFront edge caches before it expires, you can invalidate the file from edge caches. 
+
+The next time a viewer requests the file, CloudFront returns to the origin to fetch the latest version of the file.
+
+[Invalidate files from CDN cache](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
+
+## Local-exec provisioners
+
+The local-exec provisioner invokes a local executable after a resource is created. This invokes a process on the machine running Terraform, not on the resource. 
+
+A better way to achieve this is through configuration management tools, such as Ansible. However, since the functionality exists in Terraform, it will be used in this occassion.
+
+[Local-exec Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)
+
+If you need to write a long CLI command in your Terraform code, you can split it into several lines, using `Heredoc`, which is explained better here:
+[Heredoc for Terraform](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings)
