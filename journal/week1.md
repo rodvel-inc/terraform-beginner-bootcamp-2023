@@ -101,3 +101,9 @@ A better way to achieve this is through configuration management tools, such as 
 
 If you need to write a long CLI command in your Terraform code, you can split it into several lines, using `Heredoc`, which is explained better here:
 [Heredoc for Terraform](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings)
+
+### For-each expressions in Terraform
+
+In Terraform, the for_each expression allows you to iterate over a list or map and create multiple instances of a resource or module based on the elements of that list or map. This is useful when you want to manage multiple similar resources or configurations in a more dynamic way.
+
+[For_each meta-argument](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
