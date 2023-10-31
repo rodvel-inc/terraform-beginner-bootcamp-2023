@@ -3,13 +3,27 @@ require 'json'
 require 'pry'
 require 'active_model'
 
+# We will mock having a state or db for this development server by setting
+# a global variable. This is not encouraged in a production server.
 $home = {}
 
+# This is a Ruby class that includes validations from ActiveRecord.
+# This will represent our Home resources as a Ruby object.
 class Home
+# ActiveModel is part of Ruby on Rails.
+# It is used as an ORM (Object Relational Mapping). It provides validations.
+# The production Terratowns server is Ruby on Rails and it uses very similar (almost identical)
+# validations.
   include ActiveModel::Validations
   attr_accessor :town, :name, :description, :domain_name, :content_version
 
-  validates :town, presence: true
+  validates :town, presence: true, inclusion: {in: [
+    'cooker-cove',
+    'melomaniac-mansion',
+    'video-valley',
+    'the-nomad-pad',
+    'gamers-grotto'
+  ]}
   validates :name, presence: true
   validates :description, presence: true
   validates :domain_name, 
@@ -40,11 +54,11 @@ class TerraTownsMockServer < Sinatra::Base
   end
 
   def x_access_code
-    '9b49b3fb-b8e9-483c-b703-97ba88eef8e0'
+    return '9b49b3fb-b8e9-483c-b703-97ba88eef8e0'
   end
 
   def x_user_uuid
-    'e328f4ab-b99f-421c-84c9-4ccea042c7d1'
+    return 'e328f4ab-b99f-421c-84c9-4ccea042c7d1'
   end
 
   def find_user_by_bearer_token
