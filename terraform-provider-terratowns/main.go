@@ -140,7 +140,7 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 		"description": d.Get("description").(string),
 		"town": d.Get("town").(string),
 		"domain_name": d.Get("domain_name").(string),
-		"content_version": d.Get("content_version").(float64),
+		"content_version": d.Get("content_version").(int),
 	}
 
 	payloadBytes, err := json.Marshal(payload)
