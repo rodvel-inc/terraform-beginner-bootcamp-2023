@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -130,6 +129,7 @@ func Resource() *schema.Resource {
 }
 
 func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseCreate:start")
 	var diags diag.Diagnostics
 
@@ -183,10 +183,12 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 	d.SetId(homeUUID)
 
 	log.Print("resourceHouseCreate:end")
+
 	return diags
 }
 
 func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseRead:start")
 	var diags diag.Diagnostics
 
@@ -231,10 +233,12 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 	}
 
 	log.Print("resourceHouseRead:end")
+
 	return diags
 }
 
 func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseUpdate:start")
 	var diags diag.Diagnostics
 
@@ -287,6 +291,7 @@ func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 }
 
 func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseDelete:start")
 	var diags diag.Diagnostics
 
